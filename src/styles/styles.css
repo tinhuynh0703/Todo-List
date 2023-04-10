@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0093e9;
+  font-family: "Lobster", cursive;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.header h1 {
+  color: white;
+  font-size: 50px;
+  margin: 20px;
+}
+
+/* CONTENT */
+.form-input {
+  display: flex;
+}
+
+.form-input .todo-input {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.form-input .add-button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  margin: 10px;
+  background-color: #ff7675;
+  color: white;
+  cursor: pointer;
+}
+
+.form-input .dropdown {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  margin: 10px;
+  background-color: #ff7675;
+  color: white;
+  cursor: pointer;
+}
+
+.list-todo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-todo .card {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  min-width: 50%;
+}
+
+.card .checkbox {
+  margin-left: auto;
+  margin-right: 16px;
+  padding: 10px;
+}
+
+.card input[type="checkbox"] {
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 0.15em;
+  outline: none;
+  cursor: pointer;
+}
+
+.card .isCompleted {
+  text-decoration: line-through;
+}
+
+/* FOOTER */
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+}
+
+/* BREAK-POINT */
+@media screen and (max-width: 576px) {
+  .form-input {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .form-input .todo-input {
+    order: 2;
+  }
+}
