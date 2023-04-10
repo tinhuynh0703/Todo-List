@@ -10,7 +10,7 @@ function ListTodo(props) {
   return (
     <ul className="list-todo">
       {todos.map((todo, index) => (
-        <li key={todo.id} className="card">
+        <li key={index} className="card">
           {todo.completed ? (
             <span className="isCompleted">{todo.title}</span>
           ) : (

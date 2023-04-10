@@ -8,12 +8,19 @@ import MainLayout from "@/components/layout";
 export default function Home() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([
-    { id: 1, title: "todo 1", completed: false },
-    { id: 2, title: "todo 2", completed: false },
-    { id: 3, title: "todo 3", completed: false },
+    { id: 1, title: "Quét nhà", completed: false },
+    { id: 2, title: "Giặt đồ", completed: false },
+    { id: 3, title: "Phơi quần áo", completed: false },
   ]);
   const [selectedOption, setSelectedOption] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
+
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem("todos"));
+    if (todos) {
+      setTodos(todos);
+    }
+  }, []);
 
   const handleStatusChange = (id) => {
     const newTodos = [...todos];
@@ -25,6 +32,7 @@ export default function Home() {
   const handleDeleteTodo = (id) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
   };
 
   const handleDropdownChange = (e) => {
@@ -57,6 +65,7 @@ export default function Home() {
         title: todo,
         completed: false,
       };
+      localStorage.setItem("todos", JSON.stringify([...todos, newTodo]));
       setTodos([...todos, newTodo]);
       setTodo("");
     }
