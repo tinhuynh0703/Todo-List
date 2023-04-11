@@ -5,8 +5,9 @@
 }
 
 body {
-  background-color: #0093e9;
   font-family: "Lobster", cursive;
+  background: url("https://thumbs.dreamstime.com/b/todo-list-seamless-pattern-universal-background-66678083.jpg")
+    center repeat;
 }
 
 .container {
@@ -109,7 +110,7 @@ body {
 .footer {
   text-align: center;
   margin-top: 20px;
-  color: white;
+  color: #000;
 }
 
 /* BREAK-POINT */
