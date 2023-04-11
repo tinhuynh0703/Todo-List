@@ -7,11 +7,7 @@ import MainLayout from "@/components/layout";
 
 export default function Home() {
   const [todo, setTodo] = useState("");
-  const [todos, setTodos] = useState([
-    { id: 1, title: "Quét nhà", completed: false },
-    { id: 2, title: "Giặt đồ", completed: false },
-    { id: 3, title: "Phơi quần áo", completed: false },
-  ]);
+  const [todos, setTodos] = useState([]);
   const [selectedOption, setSelectedOption] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
 
@@ -26,13 +22,14 @@ export default function Home() {
     const newTodos = [...todos];
     const index = newTodos.findIndex((todo) => todo.id === id);
     newTodos[index].completed = !newTodos[index].completed;
+    localStorage.setItem("todos", JSON.stringify(newTodos));
     setTodos(newTodos);
   };
 
   const handleDeleteTodo = (id) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
     localStorage.setItem("todos", JSON.stringify(newTodos));
+    setTodos(newTodos);
   };
 
   const handleDropdownChange = (e) => {
@@ -72,13 +69,6 @@ export default function Home() {
     }
   };
 
-  const handleUpdateTodo = (id, title) => {
-    const newTodos = [...todos];
-    const index = newTodos.findIndex((todo) => todo.id === id);
-    newTodos[index].title = title;
-    setTodos(newTodos);
-  };
-
   return (
     <MainLayout>
       <div className="container">
@@ -101,7 +91,6 @@ export default function Home() {
         <ListTodo
           handleDelete={handleDeleteTodo}
           handleChecked={handleStatusChange}
-          handleUpdate={handleUpdateTodo}
           todos={filteredTodos}
         />
       </div>

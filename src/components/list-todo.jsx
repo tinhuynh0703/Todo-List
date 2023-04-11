@@ -1,12 +1,11 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEdit, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
 
 library.add(faTrashCan, faEdit);
 
 function ListTodo(props) {
-  const { todos, handleChecked, handleDelete, handleUpdate } = props;
+  const { todos, handleChecked, handleDelete } = props;
 
   return (
     <ul className="list-todo">
@@ -15,16 +14,7 @@ function ListTodo(props) {
           {todo.completed ? (
             <span className="isCompleted">{todo.title}</span>
           ) : (
-            <input
-              style={{
-                border: "none",
-                outline: "none",
-                fontFamily: "inherit",
-                fontSize: "16px",
-              }}
-              value={todo.title}
-              type="text"
-            ></input>
+            <span>{todo.title}</span>
           )}
           <input
             className="checkbox"
