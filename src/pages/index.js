@@ -55,7 +55,8 @@ export default function Home() {
 
   const handleAddTodo = (e) => {
     e.preventDefault();
-    if (todo === "") {
+    const regex = /^\s+$/;
+    if (todo === "" || regex.test(todo)) {
       toast.error("Input is not allowed empty!", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
@@ -69,6 +70,13 @@ export default function Home() {
       setTodos([...todos, newTodo]);
       setTodo("");
     }
+  };
+
+  const handleUpdateTodo = (id, title) => {
+    const newTodos = [...todos];
+    const index = newTodos.findIndex((todo) => todo.id === id);
+    newTodos[index].title = title;
+    setTodos(newTodos);
   };
 
   return (
@@ -93,6 +101,7 @@ export default function Home() {
         <ListTodo
           handleDelete={handleDeleteTodo}
           handleChecked={handleStatusChange}
+          handleUpdate={handleUpdateTodo}
           todos={filteredTodos}
         />
       </div>
