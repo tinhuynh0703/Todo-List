@@ -59,7 +59,7 @@ export default function Home() {
       });
     } else {
       const newTodo = {
-        id: todos.length + 1,
+        id: JSON.parse(localStorage.getItem("todos"))?.slice(-1)[0].id + 1 || 1,
         title: todo,
         completed: false,
       };
